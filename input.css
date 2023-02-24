@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+label{
+    @apply font-bold text-lg
+}
+input{
+    @apply block w-full border-2 border-blue-300 my-2 rounded-lg px-3 py-2 focus:outline-none
+}
+textarea{
+    @apply block w-full border-2 rounded-lg px-3 py-2 resize-none border-blue-300 focus:outline-none
+}
+.errorlist{
+    @apply text-red-600
+}

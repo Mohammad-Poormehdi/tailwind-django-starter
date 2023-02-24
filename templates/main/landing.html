@@ -1,0 +1,84 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+    وبسایت شخصی محمد پورمهدی
+{% endblock %}
+
+{% block content %}
+    <!-- hero section -->
+    <section class="container p-10 mx-auto grid grid-cols-2 max-md:grid-cols-1 max-md:p-5">
+        <div class="flex items-center">
+            <img src="{% static 'images/hero.png' %}" class="w-3/4 mx-auto" alt="">
+        </div>
+        <div dir="rtl" class="py-20 pr-20 space-y-8 max-md:p-6">
+            <h1 class="text-4xl font-bold max-md:text-center">سلام من <span class="text-blue-500">محمد پورمهدی</span> هستم.</h1>
+            <p class="text-2xl max-md:text-center">من با ساخت وبسایت به کسب و کار های کوچیک و بزرگ کمک می کنم تا از فضای اینترنت نهایت استفاده رو برای رشدشون ببرن</p>
+            <a href="{% url 'contact' %}"><button class="mt-10 bg-emerald-500 text-white text-xl px-3 py-2 rounded-lg hover:bg-emerald-700 hover:scale-105 duration-200 max-md:w-full">شروع همکاری</button></a>
+        </div>
+    </section>  
+    <div class="w-3/5 mx-auto rounded-xl h-1 bg-blue-500"></div>
+    <!-- About my work section-->
+    <section class="">
+        <div dir="rtl" class="container py-6 px-4 mx-auto gap-4 grid grid-cols-4 max-md:grid-cols-1">
+            <h1 class="text-2xl col-span-4 font-bold max-md:col-span-1 text-center ">سایتی که براتون طراحی میکنم دارای...</h1>
+            <!-- about my work card 1-->
+            <div dir="rtl" class="p-10 bg-white space-y-5 rounded-lg shadow-lg hover:scale-110 duration-300">
+                <div class="flex  items-center">
+                    <i class="fa mx-3 text-emerald-600 fa-headset"></i>
+                    <h2 class="text-lg font-bold">پشتیبانی</h2>
+                </div>
+                <p>اگر برای سایتتون مشکلی به وجود بیاد من اون رو به صورت رایگان براتون برطرف میکنم تا دیگه نیازی به فرد دیگه برای پشتیبانی نباشه</p>
+            </div>
+            <!-- about my work card 2-->
+            <div dir="rtl" class="p-10 bg-white space-y-5 rounded-lg shadow-lg hover:scale-110 duration-300">
+                <div class="flex  items-center">
+                    <i class="fa mx-3 text-emerald-600 fa-brush"></i>
+                    <h2 class="text-lg font-bold">ظاهر منحصر به فرد</h2>
+                </div>
+                <p>سایتی که براتون طراحی میکنم از قالب های آماده استفاده نمیشه و همه چیز به صورت اختصاصی مخصوص کسب و کار شما طراحی میشه</p>
+            </div>
+            <!-- about my work card 3-->
+            <div dir="rtl" class="p-10 bg-white space-y-5 rounded-lg shadow-lg hover:scale-110 duration-300">
+                <div class="flex  items-center">
+                    <i class="fa mx-3 text-emerald-600 fa-shield"></i>
+                    <h2 class="text-lg font-bold">امنیت بالا</h2>
+                </div>
+                <p>با استفاده از تکنولوژی های بروز امنیت سایتتون رو به حداکثر می رسونم تا کسی نتونه با حمله سایبری به کسب و کار شما آسیب بزنه</p>
+            </div>
+            <!-- about my work card 4-->
+            <div dir="rtl" class="p-10 bg-white space-y-5 rounded-lg shadow-lg hover:scale-110 duration-300">
+                <div class="flex  items-center">
+                    <i class="fa mx-3 text-emerald-600 fa-laptop"></i>
+                    <h2 class="text-lg font-bold">امنیت بالا</h2>
+                </div>
+                <p>وب سایتی که من براتون طراحی میکنم شما رو از دست افراد سودجو در امان میزاره</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work example section -->
+    <section class="bg-blue-100 mt-3">
+        <div dir="rtl" class="container space-y-6 max-w-6xl py-6 px-3 mx-auto">
+            <h2 class="font-bold my-4 text-2xl text-center"> چه سایت هایی طراحی کردم ؟</h2>
+            {% for work in works %}
+                <!-- work examble card -->
+                <div dir="rtl" class="grid bg-white overflow-hidden rounded-lg grid-cols-2 shadow-lg max-md:grid-cols-1">
+                    <div class="p-10 space-y-5 relative max-md:order-2">
+                        <h2 class="text-xl font-bold">{{work.name}}</h2>
+                        <p class="pb-3">{{work.description}}</p>
+                        <a href="{{work.url}}"><button class=" bg-white text-black border border-black text-xl px-3 py-2 rounded-lg hover:bg-slate-200 hover:scale-105 duration-200 absolute bottom-5 right-5 max-md:w-full max-md:static">مشاهده وبسایت</button></a>
+                    </div>
+                    <img src="{{work.thumbnail.url}}" alt="">
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- work with me section -->
+    <section class="">
+        <div class="container max-w-xl mx-auto px-4 text-center py-6 space-y-6">
+            <h1 class="text-3xl font-bold  text-center">درخواست همکاری</h1>
+            <p class="text-center text-lg">برای درخواست پروژه اطلاعات خودتون رو همراه با توضیحات ارسال کنید</p>
+            <a class="mx-auto" href="{% url 'contact' %}"><button class="bg-emerald-500 w-full mx-auto text-white px-3 py-2 mt-5 rounded-lg hover:bg-emerald-700 duration-300 hover:scale-105">شروع همکاری</button></a>
+        </div>
+    </section>
+{% endblock content %}

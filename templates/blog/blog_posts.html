@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block title %}
+    بلاگ
+{% endblock %}
+{% block content %}
+<div class="bg-blue-200 h-screen">
+    <div class="container mx-auto p-10 grid grid-cols-4 gap-5 max-md:grid-cols-1">
+        <!-- post card -->
+        {% for post in posts %}
+        <a href="{% url 'post' post.slug %}">
+            <div dir="rtl" class="overflow-hidden bg-white rounded-xl shadow-xl">
+                <img src="{{post.thumbnail.url}}" class="w-full" alt="">
+                <div class="p-4 space-y-4">
+                    <h3 class="font-bold">{{post.title}}</h3>
+                    <p>{{post.content|truncatewords:20}}</p>
+                    <div class="flex justify-between">
+                        <p>نویسنده: {{post.author}}</p>
+                        <p>زمان مطالعه: {{post.reading_time}}دقیقه</p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

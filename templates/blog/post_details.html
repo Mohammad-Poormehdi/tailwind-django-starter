@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load blog_extras %}
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+<style>
+    h1{
+        font-weight: bold;
+        font-size: 26px;
+    }
+</style>
+<div dir="rtl" class="container max-w-4xl mx-auto space-y-10 p-6">
+    <!-- title and intro container -->
+    <div class="text-center space-y-6 mx-auto max-w-4xl">
+        <h1 class="text-4xl font-bold">{{post.title}}</h1>
+        <p class="text-lg">{{post.intro}}</p>
+        <p class="text-blue-500">نویسنده: {{post.author}}</p>
+    </div>
+    <img src="{{post.thumbnail.url}}" class="mx-auto w-full" alt="">
+    <div class="max-w-4xl space-y-6 text-lg py-5 mx-auto">{{post.content | convert_markdown | safe}}</div>
+</div>
+{% endblock %}
